@@ -103,7 +103,17 @@ fi
 
 export EDITOR='emacsclient -t -a "" '
 export VISUAL='emacsclient -t -a ""'
+
+# open emacs on  terminal as default
 alias emacs='emacs -nw'
+
+# debain system fd naming as fdfind
+# sudo apt install bfs
+if [ -f /etc/debian_version ]; then
+    alias fd='fdfind'
+    alias find='bfs'
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
