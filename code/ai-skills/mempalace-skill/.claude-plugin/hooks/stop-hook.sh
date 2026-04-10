@@ -39,15 +39,18 @@ main() {
     # No session ID to track state
     [[ -z "$session_id" ]] && return 0
 
+    # Sanitize session_id: only allow safe filename characters
+    [[ "$session_id" =~ ^[a-zA-Z0-9._-]+$ ]] || return 0
+
     # --- Count human messages ---
     local human_count
 
     # JSONL format (Claude Code transcripts): lines with "role":"human" or "type":"human"
-    human_count=$(grep -cE '"role" *: *"human"|"type" *: *"human"' "$transcript_path" 2>/dev/null || echo "0")
+    human_count=$(grep -cE '"role" *: *"human"|"type" *: *"human"' "$transcript_path" 2>/dev/null) || human_count=0
 
     # Fallback: markdown quote lines (> prefix = user turns)
     if [[ "$human_count" -eq 0 ]]; then
-        human_count=$(grep -c '^> ' "$transcript_path" 2>/dev/null || echo "0")
+        human_count=$(grep -c '^> ' "$transcript_path" 2>/dev/null) || human_count=0
     fi
 
     # --- Load last save count ---
@@ -55,6 +58,7 @@ main() {
     local last_save=0
     if [[ -f "$state_file" ]]; then
         last_save=$(cat "$state_file" 2>/dev/null || echo "0")
+        [[ "$last_save" =~ ^[0-9]+$ ]] || last_save=0
     fi
 
     # --- Check threshold ---
