@@ -1,0 +1,19 @@
+{
+  "name": "mempalace-lite",
+  "version": "1.0.0",
+  "description": "Pure-prompt MemPalace — AI memory system with zero dependencies. Stores verbatim memories as markdown files, searchable via ripgrep. No Python, no ChromaDB, no API keys.",
+  "author": {
+    "name": "milla-jovovich"
+  },
+  "license": "MIT",
+  "commands": [],
+  "keywords": [
+    "memory",
+    "ai",
+    "palace",
+    "search",
+    "filesystem",
+    "prompt"
+  ],
+  "repository": "https://github.com/milla-jovovich/mempalace"
+}

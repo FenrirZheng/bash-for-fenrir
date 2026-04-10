@@ -1,0 +1,15 @@
+{
+  "name": "mempalace-lite",
+  "owner": {
+    "name": "milla-jovovich",
+    "url": "https://github.com/milla-jovovich"
+  },
+  "plugins": [
+    {
+      "name": "mempalace-lite",
+      "source": "./.claude-plugin",
+      "description": "Pure-prompt AI memory — no Python, no ChromaDB. Stores verbatim memories as markdown files under ~/.mempalace/.",
+      "version": "1.0.0"
+    }
+  ]
+}
