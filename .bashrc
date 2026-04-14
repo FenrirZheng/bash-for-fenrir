@@ -145,3 +145,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# 載入自訂函式
+for f in ~/.bash.d/*.sh; do source "$f"; done
+
