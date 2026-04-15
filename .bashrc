@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# 載入自訂函式 (放在 interactive guard 之前, 讓非互動式 shell 也能使用)
+for f in ~/.bash.d/*.sh; do source "$f"; done
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -124,7 +127,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="$HOME/.bash.d:$HOME/.local/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/.bash.d:$HOME/.shell.d/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
 . "$HOME/.cargo/env"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -145,7 +148,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# 載入自訂函式
-for f in ~/.bash.d/*.sh; do source "$f"; done
 
