@@ -110,6 +110,7 @@ export VISUAL='emacsclient -t -a ""'
 # open emacs on  terminal as default
 alias emacs='emacs -nw'
 
+
 # debain system fd naming as fdfind
 # sudo apt install bfs
 if [ -f /etc/debian_version ]; then
@@ -149,3 +150,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+#  eval "$(zoxide init bash)" , folder dictionary
+eval "$(zoxide init bash)"
